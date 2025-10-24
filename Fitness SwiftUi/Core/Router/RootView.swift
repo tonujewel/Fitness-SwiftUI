@@ -13,7 +13,7 @@ struct RootView: View {
     
     var body: some View {
         NavigationStack(path: $router.path) {
-            rootView(for: router.root) 
+            rootView(for: router.root)
                 .navigationDestination(for: AppRoute.self) { route in
                     destinationView(for: route)
                 }
@@ -30,8 +30,10 @@ struct RootView: View {
             
         case .register:
             RegisterView()
-            //        case .dashboard:
-            //            DashboardView()
+        case .completeProfile:
+            CompleteProfileView()
+        case .successRegistration:
+            SuccessRegistrationView()
             //        case .employee:
             //            EmployeeListView()
             
@@ -47,8 +49,10 @@ struct RootView: View {
             LoginView()
         case .register:
             RegisterView()
-            //        case .dashboard:
-            //            DashboardView()
+        case .completeProfile:
+            CompleteProfileView()
+        case .successRegistration:
+            SuccessRegistrationView()
             //        case .employee:
             //            EmployeeListView()
         }

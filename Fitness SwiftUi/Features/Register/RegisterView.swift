@@ -15,6 +15,8 @@ struct RegisterView: View {
     @State private var password = ""
     @State private var isAccepted = false
     
+    @EnvironmentObject var router : Router
+    
     var body: some View {
         ScrollView{
             
@@ -51,6 +53,8 @@ struct RegisterView: View {
             
             GradientButton(title: "Register"){
                 print("Button Tapped")
+                
+                router.push(.completeProfile)
             }
             .padding(.top, 60)
             
@@ -92,13 +96,12 @@ struct RegisterView: View {
                     .bold()
                     .foregroundStyle(primaryGradient)
                     
-            }.padding(.top, 20)
-            
-            // need to change image
-            
-            
-            
-            
+            }
+            .padding(.top, 20)
+            .onTapGesture {
+                router.pop()
+            }
+
         }
         .padding(.horizontal, 16)
     }

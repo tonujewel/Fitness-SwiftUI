@@ -11,8 +11,9 @@ struct OnBoarding: View {
     
     @State private var selectedTab = 0
     @State private var animate = false
+    @EnvironmentObject var router: Router
+
     
-    // MARK: - Data
     private let items: [OnBoardingItem] = [
         OnBoardingItem(
             title: "Track Your Goal",
@@ -22,7 +23,7 @@ struct OnBoarding: View {
         ),
         OnBoardingItem(
             title: "Get Burn",
-            subtitle: "Let’s keep burning to achieve your goals. It hurts only temporarily, but giving up lasts forever.",
+            subtitle: "Let's keep burning to achieve your goals. It hurts only temporarily, but giving up lasts forever.",
             imageName: "onboard_img_1",
             background: AnyView(OnBoardBg1().fill(primaryGradient))
         ),
@@ -34,7 +35,7 @@ struct OnBoarding: View {
         ),
         OnBoardingItem(
             title: "Improve Sleep",
-            subtitle: "Quality sleep is the key to a healthy life. Let’s help you build the best sleeping habit.",
+            subtitle: "Quality sleep is the key to a healthy life. Let's help you build the best sleeping habit.",
             imageName: "onboard_img_3",
             background: AnyView(OnBoardBg3().fill(primaryGradient))
         )
@@ -42,12 +43,9 @@ struct OnBoarding: View {
     
     var body: some View {
         
-        @EnvironmentObject var router: Router
-        
         GeometryReader { size in
             ZStack(alignment: .bottomTrailing) {
                 
-                // MARK: - TabView
                 TabView(selection: $selectedTab) {
                     ForEach(Array(items.enumerated()), id: \.offset) { index, item in
                         VStack {
@@ -57,7 +55,7 @@ struct OnBoarding: View {
                                 Image(item.imageName)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: (size.size.height / 2) - 120)
+                                    .frame(height: max(0, (size.size.height / 2) - 120))
                                     .opacity(animate ? 1 : 0)
                                     .offset(y: animate ? 0 : 40)
                                     .animation(.easeOut(duration: 0.6).delay(0.1), value: animate)
@@ -85,24 +83,27 @@ struct OnBoarding: View {
                             Spacer()
                         }
                         .tag(index)
-                        .onAppear {
-                            // Trigger animation when page appears
-                            withAnimation {
-                                animate = false
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                                withAnimation {
-                                    animate = true
-                                }
-                            }
-                        }
                         .ignoresSafeArea()
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .animation(.easeInOut, value: selectedTab)
                 .ignoresSafeArea()
+                .onChange(of: selectedTab) { _ in
+                    // Reset animation when tab changes
+                    animate = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                        animate = true
+                    }
+                }
+                .onAppear {
+                    // Initial animation
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                        animate = true
+                    }
+                }
                 
-                // MARK: - Bottom Left Progress Button
+                
                 CircularProgressView(totalItems: items.count, selectedIndex: selectedTab + 1)
                     .onTapGesture {
                         withAnimation(.easeInOut) {
@@ -110,7 +111,7 @@ struct OnBoarding: View {
                                 selectedTab += 1
                             } else {
                                 print("🎉 Onboarding Finished")
-                                router.push(.register)
+                                router.replace(with: .login)
                             }
                         }
                     }
@@ -158,7 +159,7 @@ struct CircularProgressView: View {
                 .shadow(radius: 4)
             
             if selectedIndex == totalItems {
-                Text("Jewel")
+                Text("Next")
                     .font(.system(size: 14, weight: .bold))
                     .foregroundColor(.white)
             } else {

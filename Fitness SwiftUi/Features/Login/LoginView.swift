@@ -13,6 +13,7 @@ struct LoginView: View {
     @State private var phoneNumber = ""
     @State private var email = ""
     @State private var password = ""
+    @EnvironmentObject var router : Router
     
     var body: some View {
         
@@ -30,7 +31,6 @@ struct LoginView: View {
                 Text("Forgot your password?")
                 
             }
-            // space betwen some 
             Spacer()
             
             GradientButton(title: "Login"){
@@ -75,8 +75,13 @@ struct LoginView: View {
                 Text("Register")
                     .bold()
                     .foregroundStyle(primaryGradient)
-                    
-            }.padding(.top, 20)
+                
+            }
+            .padding(.top, 20)
+            .onTapGesture {
+                router.push(.register)
+            }
+            
         }
         .padding(.horizontal, 16)
         

@@ -11,7 +11,8 @@ enum AppRoute: Hashable {
     case onBoarding
     case login
     case register
-//    case dashboard
+    case completeProfile
+    case successRegistration
 //    case employee
 //    case profile(name: String)
     

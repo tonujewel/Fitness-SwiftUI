@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		29BFD8B22EABBA4200CE3261 /* Fitness-SwiftUi-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29BFD8B12EABBA4200CE3261 /* Fitness-SwiftUi-Info.plist */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		29458E8A2EAAB05800CB8270 /* Fitness SwiftUi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness SwiftUi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29BFD8B12EABBA4200CE3261 /* Fitness-SwiftUi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Fitness-SwiftUi-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -34,6 +39,7 @@
 			children = (
 				29458E8C2EAAB05800CB8270 /* Fitness SwiftUi */,
 				29458E8B2EAAB05800CB8270 /* Products */,
+				29BFD8B12EABBA4200CE3261 /* Fitness-SwiftUi-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29BFD8B22EABBA4200CE3261 /* Fitness-SwiftUi-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

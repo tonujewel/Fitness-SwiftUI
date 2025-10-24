@@ -13,7 +13,7 @@ internal import Combine
 final class Router: ObservableObject {
     
     @Published var path = NavigationPath()
-    @Published var root: AppRoute = .onBoarding // ✅ Track root route
+    @Published var root: AppRoute = .onBoarding
     
     func push(_ route: AppRoute) {
         path.append(route)
