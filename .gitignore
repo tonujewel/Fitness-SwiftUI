@@ -1,0 +1,49 @@
+# ======================
+# Swift / Xcode .gitignore
+# ======================
+
+# User-specific Xcode files
+xcuserdata/
+*.xcuserstate
+
+# Xcode project workspace
+*.xcworkspace
+
+# Build products
+DerivedData/
+build/
+
+# Swift Package Manager
+.build/
+Packages/
+Package.pins
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Archives
+*.xcarchive
+
+# macOS files
+.DS_Store
+
+# iOS symbolication / debugging
+*.dSYM.zip
+*.dSYM
+
+# Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
