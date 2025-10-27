@@ -106,7 +106,7 @@ struct CompleteProfileView: View {
                         GradientButton(title: "Next"){
                             print("Next Button Tapped")
                             
-                            router.push(.successRegistration)
+                            router.push(.fitnessGoal)
                         }
                         .padding(.top, 30)
                         

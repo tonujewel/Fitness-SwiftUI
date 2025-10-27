@@ -15,3 +15,12 @@ struct OnBoardingItem: Identifiable {
     let imageName: String
     let background: AnyView
 }
+
+
+struct FitnessGoalModel: Identifiable {
+    
+    let id = UUID()
+    let title: String
+    let subtitle: String
+    let imageName: String
+}

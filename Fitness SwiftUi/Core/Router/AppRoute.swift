@@ -13,6 +13,7 @@ enum AppRoute: Hashable {
     case register
     case completeProfile
     case successRegistration
+    case fitnessGoal
 //    case employee
 //    case profile(name: String)
     

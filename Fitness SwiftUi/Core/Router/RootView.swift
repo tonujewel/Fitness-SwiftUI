@@ -34,6 +34,8 @@ struct RootView: View {
             CompleteProfileView()
         case .successRegistration:
             SuccessRegistrationView()
+        case .fitnessGoal:
+            FitnessGoalView()
             //        case .employee:
             //            EmployeeListView()
             
@@ -53,6 +55,8 @@ struct RootView: View {
             CompleteProfileView()
         case .successRegistration:
             SuccessRegistrationView()
+        case .fitnessGoal:
+            FitnessGoalView()
             //        case .employee:
             //            EmployeeListView()
         }
